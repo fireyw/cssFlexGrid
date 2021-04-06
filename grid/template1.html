@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid 정리</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            /*grid-template-columns: 200px 1fr;  !*첫번째 200px 고정시킴*!*/
+            /* gap을 주려면 % 보다는 fraction(분수 부분) 사용 아니면 스크롤이 생성됨*/
+            /*grid-auto-rows: 300px;  !* div 내부에 따라 grid크기가 변경될 수 있는데 통일 시킴*!*/
+            grid-auto-rows: minmax(10em, auto); /*최소 10em(font사이즈 기준: 현재 font의 10배)이고 넘어가면 auto로 설정 */
+            grid-gap: 1rem;
+            /* 정렬 */
+            /*justify-items: start;  !* 컬럼 기준 정렬 start center end *!*/
+            /*align-items: start;    !*행 기준 정렬 start center end *!*/
+            background: lightgray;
+        }
+        .item {
+            background: rgba(255,0,0,0.5);
+        }
+        .item:nth-child(odd){
+            background: rgba(255,255,0,0.5);
+        }
+        .item:nth-child(1){
+            /* 그리드를 합쳐서 보여줄때 영역은 첫줄이 1번부터 시작(ex 첫번째 col이 3개의 col을 차지 */
+            grid-column: 1/4;  /*1부터 4까지 영역을 합치겠다. 분수아님*/
+        }
+        .item:nth-child(4){
+            /* 그리드를 합쳐서 보여줄때 영역은 첫줄이 1번부터 시작(ex 첫번째 col이 3개의 col을 차지 */
+            grid-row: 2/4;
+            grid-column: 3;  /*위에서 합쳐진 영역 위치 조정 그리드 시작점*/
+        }
+
+        .item:nth-child(5){
+            /*justify-self: center;*/
+            /*align-self: end;*/
+        }
+
+        .item:nth-child(6){
+            grid-column:2;
+            grid-row: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+            <img src="../images/frown.png">
+            <p>1111 11 11111111111</p>
+        </div>
+        <div class="item">
+            <img src="../images/sleep.png">
+            <p>2</p>
+        </div>
+        <div class="item">
+            <img src="../images/frown.png">
+            <p>3</p>
+        </div>
+        <div class="item">
+            <img src="../images/sleep.png">
+            <p>44444444 4444444444 4444444444444</p>
+        </div>
+        <div class="item">
+            <img src="../images/frown.png">
+            <p>5</p>
+        </div>
+        <div class="item">
+            <img src="../images/sleep.png">
+            <p>6</p>
+        </div>
+    </div>
+</body>
+</html>
